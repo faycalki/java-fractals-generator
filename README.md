@@ -27,7 +27,8 @@ Java Fractal Generator is an elegant and interactive application designed for cr
    cd fractal-generator
    ```
    
-2. ```bash
+2. **Compile the entry point**:
+   ```
    javac FractalView.java
    java FractalView
    ```
@@ -43,32 +44,37 @@ Java Fractal Generator is an elegant and interactive application designed for cr
 - **Responsive Fractals**: The fractals are partially translucent and are responsive to other fractals that they may interact with, if the blending mode and colours allow so.
 
 ## Screenshots
-
 <p align="center">
   <img src="/images/fractal1.png" alt="Fractal Drawing" width="70%">
+  <br>
+  <em>Fig. 1: A captivating fractal drawing using one of the drawing patterns</em>
 </p>
-Caption: A captivating fractal drawing using one of the drawing patterns
-
 
 <p align="center">
   <img src="/images/fractal2.png" alt="Fractal Drawing" width="70%">
+  <br>
+  <em>Fig. 2: A captivating fractal drawing using a different drawing pattern</em>
 </p>
-Caption: A captivating fractal drawing using a different drawing pattern
 
 <p align="center">
   <img src="/images/fractal3.png" alt="Fractal Drawing" width="70%">
+  <br>
+  <em>Fig. 3: Another fractal drawing of another drawing pattern</em>
 </p>
-Caption: Another fractal drawing of another drawing pattern
 
 <p align="center">
   <img src="/images/buttons.png" alt="Blend Mode Change" width="70%">
+  <br>
+  <em>Fig. 4: Effortlessly change blend modes, clear canvas, and or change fractal patterns</em>
 </p>
-Caption: Effortlessly change blend modes, clear canvas, and or change fractal patterns.
+
 
 ## UML Diagram
 
 <p align="center">
   <img src="/images/UML_Diagram.png" alt="UML Diagram" width="80%">
+   <br>
+   <em> Fig. 5: UML Diagram of the project, showcasing the MVC Architecture.</em>
 </p>
 
 # License
