@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.effect.BlendMode;
+//import javafx.scene.control.Slider;
 
 // For acquiring user monitor dimensions
 import java.awt.Toolkit;
@@ -17,14 +17,17 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 /**
- * Viewer Module for the Fractal Art program.
+ * Viewer Module for the application
  * Takes in user input, sends it to Controller for processing
  * Receives instruction from Controller
  * @implSpec Uses MVC (Model, View, Controller) implementation
  * @implNote The Change Blend Mode button and approach appears to require a full re-draw of the canvas in order to change the previous drawings., hence I've opted not to implement it for now. I did, however, leave functional code for it in case one wishes to complete it in the future.
  * @author Faycal Kilali
- * @version 1.0
+ * @version 1.1
+ * @copyright Copyright (C) 2023 Faycal Kilali
+ * @license GNU Public License 3.0
  */
+
 public class FractalView extends Application {
 
     /*
@@ -42,6 +45,7 @@ public class FractalView extends Application {
     private VBox root;
     private Button changeBlendModeButton;
     private Button clearCanvasButton;
+    private Button changePatternButton;
 
     /**
      * Serves as a receiver for the User Input and also expresses to the user a GUI relevant to our uses.
@@ -65,33 +69,37 @@ public class FractalView extends Application {
         gc = canvas.getGraphicsContext2D();
         root.getChildren().add(canvas);
 
-        // Some customization of the GraphicsContext
+        // Some customization of the GraphicsContext, default values wise.
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2.0);
         gc.setGlobalAlpha(0.5); // Translucency
 
 
         // Button for BlendMode
-        changeBlendModeButton = new Button("Change Blend Mode");
+        changeBlendModeButton = new Button("Change Blend Mode (applies to successive draws)");
         // Button for clearing canvas
-        clearCanvasButton = new Button("Clear Canvas");
+        clearCanvasButton = new Button("Clear Canvas"); // Currently unfunctional
+        // Button to change pattern
+        changePatternButton = new Button("Change fractal drawing pattern");
+
+
+
         VBox buttonContainer = new VBox(10); // 10 is the spacing between buttons
-        buttonContainer.getChildren().addAll(changeBlendModeButton, clearCanvasButton);
+        buttonContainer.getChildren().addAll(changeBlendModeButton, clearCanvasButton, changePatternButton);
         root.getChildren().add(buttonContainer);
 
         // Scene
         Scene scene = new Scene(root, monitorWidth, monitorHeight, Color.WHITE);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Fractal Generator");
+        primaryStage.setTitle("Java Fractal Generator by Faycal Kilali");
         primaryStage.show();
 
         // We'll use the method of the current instance, hence "this", as the callback for the event.
         canvas.setOnMouseClicked(this::drawClickEvent);
         changeBlendModeButton.setOnMouseClicked(this::ChangeBlendModeEvent);
         clearCanvasButton.setOnMouseClicked(this::wipeCanvas);
+        changePatternButton.setOnMouseClicked(this::changePattern);
 
-        // Default for now
-        gc.setGlobalBlendMode(BlendMode.DIFFERENCE);
     }
 
 
@@ -148,6 +156,13 @@ public class FractalView extends Application {
      */
     public void wipeCanvas(MouseEvent event) {
         controller.wipeCanvas();
+    }
+
+    /**
+     * This changes the fractal pattern
+     */
+    public void changePattern(MouseEvent event) {
+        controller.changePattern();
     }
 
 }
