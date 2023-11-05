@@ -28,7 +28,7 @@ Java Fractal Generator is an elegant and interactive application designed for cr
    ```
    
 2. **Compile the entry point**:
-   ```
+   ```bash
    javac FractalView.java
    java FractalView
    ```
